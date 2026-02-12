@@ -58,3 +58,23 @@
     "NEW INSTRUCTION": "WHEN fixing request/response JSON handling THEN run a curl smoke test via bash"
 }
 
+[2026-02-12 20:20] - Updated by Junie - Trajectory analysis
+{
+    "PLAN QUALITY": "near-optimal",
+    "REDUNDANT STEPS": "run git status twice",
+    "MISSING STEPS": "check history, remove secrets from history (if needed)",
+    "BOTTLENECK": "History verification was skipped after git log was blocked.",
+    "PROJECT NOTE": "-",
+    "NEW INSTRUCTION": "WHEN sensitive env file is or was git-tracked THEN Run git log --follow for the file and ask_user about history rewrite."
+}
+
+[2026-02-12 21:10] - Updated by Junie - Trajectory analysis
+{
+    "PLAN QUALITY": "near-optimal",
+    "REDUNDANT STEPS": "-",
+    "MISSING STEPS": "handle cross-origin download",
+    "BOTTLENECK": "Assumed currentImage is directly downloadable without cross-origin handling.",
+    "PROJECT NOTE": "-",
+    "NEW INSTRUCTION": "WHEN currentImage is remote http(s) URL THEN fetch it, create object URL, trigger download"
+}
+
