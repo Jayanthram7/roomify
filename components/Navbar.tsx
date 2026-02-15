@@ -1,12 +1,11 @@
-import {Box} from "lucide-react";
 import Button from "./ui/Button";
-import {useOutletContext} from "react-router";
+import { useOutletContext } from "react-router";
 
 const Navbar = () => {
     const { isSignedIn, userName, signIn, signOut } = useOutletContext<AuthContext>()
 
     const handleAuthClick = async () => {
-        if(isSignedIn) {
+        if (isSignedIn) {
             try {
                 await signOut();
             } catch (e) {
@@ -26,23 +25,21 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <nav className="inner">
-                <div className="left">
-                    <div className="brand">
-                        <Box  className="logo" />
-
-                        <span className="name">
-                            Roomify
-                        </span>
-                    </div>
-
-                    <ul className="links">
-                        <a href="#">Product</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">Community</a>
-                        <a href="#">Enterprise</a>
-                    </ul>
+                {/* Logo on the left */}
+                <div className="brand">
+                    <img src="/Logo1.png" alt="ArchLift Logo" className="logo" />
+                    <span className="name">ArchLift</span>
                 </div>
 
+                {/* Navigation links in center */}
+                <ul className="links">
+                    <a href="#">Product</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Community</a>
+                    <a href="#">Enterprise</a>
+                </ul>
+
+                {/* User actions on the right */}
                 <div className="actions">
                     {isSignedIn ? (
                         <>
@@ -50,8 +47,12 @@ const Navbar = () => {
                                 {userName ? `Hi, ${userName}` : 'Signed in'}
                             </span>
 
-                            <Button size="sm" onClick={handleAuthClick} className="btn">
-                                Log Out
+                            <Button size="sm" onClick={handleAuthClick} className="btn logout-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
                             </Button>
                         </>
                     ) : (
