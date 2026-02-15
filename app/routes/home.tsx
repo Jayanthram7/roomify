@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import { ArrowRight, ArrowUpRight, Clock, Layers } from "lucide-react";
 import Button from "../../components/ui/Button";
 import Upload from "../../components/Upload";
@@ -9,8 +10,8 @@ import { createProject, getProjects } from "../../lib/puter.action";
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "New React Router App" },
-        { name: "description", content: "Welcome to React Router!" },
+        { title: "ArchLift " },
+        { name: "description", content: "AI-powered architectural visualization. Turn your floor plans into photorealistic 3D renders instantly." },
     ];
 }
 
@@ -99,46 +100,49 @@ export default function Home() {
                 </div>
             </section>
 
-                <section className="projects">
-                    <div className="section-inner">
-                        <div className="section-head">
-                            <div className="copy">
-                                <h2>Projects</h2>
-                                <p>Your latest work and shared community projects, all in one place.</p>
-                            </div>
-                        </div>
-
-                        <div className="projects-grid">
-                            {projects.map(({ id, name, renderedImage, sourceImage, timestamp }) => (
-                                <div key={id} className="project-card group" onClick={() => navigate(`/visualizer/${id}`)}>
-                                    <div className="preview">
-                                        <img src={renderedImage || sourceImage} alt="Project"
-                                        />
-
-                                        <div className="badge">
-                                            <span>Community</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="card-body">
-                                        <div>
-                                            <h3>{name}</h3>
-
-                                            <div className="meta">
-                                                <Clock size={12} />
-                                                <span>{new Date(timestamp).toLocaleDateString()}</span>
-                                                <span>By JS Mastery</span>
-                                            </div>
-                                        </div>
-                                        <div className="arrow">
-                                            <ArrowUpRight size={18} />
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+            <section className="projects">
+                <div className="section-inner">
+                    <div className="section-head">
+                        <div className="copy">
+                            <h2>Projects</h2>
+                            <p>Your latest work and shared community projects, all in one place.</p>
                         </div>
                     </div>
-                </section>
-        </div>
+
+                    <div className="projects-grid">
+                        {projects.map(({ id, name, renderedImage, sourceImage, timestamp }) => (
+                            <div key={id} className="project-card group" onClick={() => navigate(`/visualizer/${id}`)}>
+                                <div className="preview">
+                                    <img src={renderedImage || sourceImage} alt="Project"
+                                    />
+
+                                    <div className="badge">
+                                        <span>Community</span>
+                                    </div>
+                                </div>
+
+                                <div className="card-body">
+                                    <div>
+                                        <h3>{name}</h3>
+
+                                        <div className="meta">
+                                            <Clock size={12} />
+                                            <span>{new Date(timestamp).toLocaleDateString()}</span>
+                                            <span>By JS Mastery</span>
+                                        </div>
+                                    </div>
+                                    <div className="arrow">
+                                        <ArrowUpRight size={18} />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+            <Footer />
+        </div >
     )
 }

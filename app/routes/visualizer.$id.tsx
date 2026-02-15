@@ -5,6 +5,14 @@ import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import Button from "../../components/ui/Button";
 import { createProject, getProjectById } from "../../lib/puter.action";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
+import type { Route } from "./+types/visualizer.$id";
+
+export function meta({ }: Route.MetaArgs) {
+    return [
+        { title: "ArchLift - Visualizer" },
+        { name: "description", content: "View and compare your architectural visualizations." },
+    ];
+}
 
 const VisualizerId = () => {
     const { id } = useParams();
